@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JS Clock</title>
+    <link rel="icon" type="image/x-icon" href="assets/clock-icon.jpg">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="clock">
+        <div class="hour">
+            <div class="hr" id="hr"></div>
+        </div>
+        <div class="min">
+            <div class="mn" id="mn"></div>
+        </div>
+        <div class="sec">
+            <div class="sc" id="sc"></div>
+        </div>
+    </div>
+    <div class="toggleClass" onclick="toggleClass()">
+        o
+    </div>
+    <script type="text/javascript">
+        function toggleClass() {
+            const body = document.querySelector('body');
+            body.classList.toggle('light');
+        }
+
+        const deg = 1;
+        const hr = document.getElementById("hr");
+        const mn = document.getElementById('mn');
+        const sc = document.getElementById('sc');
+
+        setInterval(() => {
+            const deg = 6;
+
+            const day = new Date();
+            const hh = day.getHours() * 30;
+            const mm = day.getMinutes() * deg;
+            const ss = day.getSeconds() * deg;
+
+            hr.style.transform = `rotate(${(hh) + (mm / 12)}deg)`;
+            mn.style.transform = `rotate(${mm}deg)`;
+            sc.style.transform = `rotate(${ss}deg)`;
+        }, 1000);
+    </script>
+
+</body>
+
+</html>
